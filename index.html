@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>متابعة إنجاز المهام - أيوب وإبراهيم</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom, #aee1f9, #f9f6d2);
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #ff6f61;
+      margin-bottom: 20px;
+    }
+    .child {
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    .child img {
+      width: 100px;
+      border-radius: 50%;
+      border: 4px solid #ffcc00;
+      margin-bottom: 10px;
+    }
+    .child h2 {
+      color: #4caf50;
+      margin: 10px 0;
+    }
+    .progress-container {
+      background: #eee;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 30px;
+      margin: 10px 0;
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(45deg, #ffcc00, #ff6f61);
+      width: 0;
+      transition: width 1s;
+      color: #fff;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+    }
+    .stats {
+      font-size: 18px;
+      color: #333;
+      margin-top: 5px;
+    }
+    .star {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      font-size: 40px;
+      color: gold;
+      animation: spin 3s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>إنجازات أيوب وإبراهيم في حفظ القرآن الكريم</h1>
+
+  <div class="child">
+    <div class="star">⭐</div>
+    <img src="Ayoub.png" alt="أيوب">
+    <h2>أيوب</h2>
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-ayoub">0%</div>
+    </div>
+    <div class="stats" id="stats-ayoub">أنجز 0 من 29 مهمة</div>
+  </div>
+
+  <div class="child">
+    <div class="star">⭐</div>
+    <img src="Ibrahim.png" alt="إبراهيم">
+    <h2>إبراهيم</h2>
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-ibrahim">0%</div>
+    </div>
+    <div class="stats" id="stats-ibrahim">أنجز 0 من 29 مهمة</div>
+  </div>
+
+  <script>
+    // عدد المهام الكلي
+    const totalTasks = 29;
+
+    // عدد المهام المنجزة لكل ابن - عدّل هذه الأرقام عند الحاجة
+    const ayoubDone = 12;
+    const ibrahimDone = 8;
+
+    // حساب النسبة
+    const ayoubPercent = Math.round((ayoubDone / totalTasks) * 100);
+    const ibrahimPercent = Math.round((ibrahimDone / totalTasks) * 100);
+
+    // تحديث شريط التقدم
+    document.getElementById('progress-ayoub').style.width = ayoubPercent + '%';
+    document.getElementById('progress-ayoub').textContent = ayoubPercent + '%';
+
+    document.getElementById('progress-ibrahim').style.width = ibrahimPercent + '%';
+    document.getElementById('progress-ibrahim').textContent = ibrahimPercent + '%';
+
+    // تحديث الإحصائيات
+    document.getElementById('stats-ayoub').textContent = `أنجز ${ayoubDone} من ${totalTasks} مهمة`;
+    document.getElementById('stats-ibrahim').textContent = `أنجز ${ibrahimDone} من ${totalTasks} مهمة`;
+  </script>
+
+</body>
+</html>
