@@ -11,6 +11,7 @@
       margin: 0;
       padding: 20px;
       text-align: center;
+      position: relative;
     }
     h1 {
       color: #ff6f61;
@@ -69,15 +70,48 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
+    /* صور الهدايا */
+    .gift-left, .gift-right {
+      position: absolute;
+      top: 250px; /* ارتفاع قريب من منتصف الكروت */
+      transform: translateY(-50%);
+      width: 300px; /* الحجم المعدل */
+      animation: bounce 2s infinite;
+    }
+    .gift-left {
+      left: 10px;
+    }
+    .gift-right {
+      right: 10px;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(-50%) translateY(0); }
+      50% { transform: translateY(-50%) translateY(-10px); }
+    }
+    @media (max-width: 600px) {
+      .child {
+        width: 90%; /* تصغير عرض البطاقات على الموبايل */
+      }
+      .gift-left, .gift-right {
+        width: 150px; /* تصغير صور الهدية للنصف على الشاشات الصغيرة */
+        top: 200px;   /* تقليل الارتفاع لتتناسب مع التصغير */
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- صورة الهدية اليسار -->
+  <img class="gift-left" src="gift.png" alt="هدية">
+
+  <!-- صورة الهدية اليمين -->
+  <img class="gift-right" src="gift.png" alt="هدية">
 
   <h1>إنجازات أيوب وإبراهيم في حفظ القرآن الكريم</h1>
 
   <div class="child">
     <div class="star">⭐</div>
-    <img src="Ayoub.png" alt="أيوب">
+    <img src="ayoub.png" alt="أيوب">
     <h2>أيوب</h2>
     <div class="progress-container">
       <div class="progress-bar" id="progress-ayoub">0%</div>
@@ -87,7 +121,7 @@
 
   <div class="child">
     <div class="star">⭐</div>
-    <img src="Ibrahim.png" alt="إبراهيم">
+    <img src="ibrahim.png" alt="إبراهيم">
     <h2>إبراهيم</h2>
     <div class="progress-container">
       <div class="progress-bar" id="progress-ibrahim">0%</div>
@@ -96,25 +130,19 @@
   </div>
 
   <script>
-    // عدد المهام الكلي
     const totalTasks = 29;
+    const ayoubDone = 12; // عدّل الرقم حسب إنجاز أيوب
+    const ibrahimDone = 8; // عدّل الرقم حسب إنجاز إبراهيم
 
-    // عدد المهام المنجزة لكل ابن - عدّل هذه الأرقام عند الحاجة
-    const ayoubDone = 12;
-    const ibrahimDone = 8;
-
-    // حساب النسبة
     const ayoubPercent = Math.round((ayoubDone / totalTasks) * 100);
     const ibrahimPercent = Math.round((ibrahimDone / totalTasks) * 100);
 
-    // تحديث شريط التقدم
     document.getElementById('progress-ayoub').style.width = ayoubPercent + '%';
     document.getElementById('progress-ayoub').textContent = ayoubPercent + '%';
 
     document.getElementById('progress-ibrahim').style.width = ibrahimPercent + '%';
     document.getElementById('progress-ibrahim').textContent = ibrahimPercent + '%';
 
-    // تحديث الإحصائيات
     document.getElementById('stats-ayoub').textContent = `أنجز ${ayoubDone} من ${totalTasks} مهمة`;
     document.getElementById('stats-ibrahim').textContent = `أنجز ${ibrahimDone} من ${totalTasks} مهمة`;
   </script>
